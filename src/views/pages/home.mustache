@@ -1,0 +1,84 @@
+{{>partials/header}}
+
+<div class="container">
+<div class="titles-home">
+     <h1>Quantos de você existe no Brasil?</h1>
+     <h2>No Brasil, de acordo com o Censo Demográfico 2010, existem cerca de 200 milhões de habitantes com mais de 130 mil nomes diferentes.</h2>
+</div>
+<div class="area-form">
+<form method="post" action="/home">
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Digite seu primeiro nome" value="{{name}}">
+        {{! <input type="submit" value="Enviar"> }}
+        <button><img src="/images/lupa.png"></button>
+    </div>    
+</form>
+</div>
+<div class="area-content">
+    <div class="area-content-title">
+        <div class="content-title"><p>{{name}}</p></div>
+    </div>
+    <div class="area-content-api">
+        <div class="area-content-api-1">
+            <img src="/images/mapa_brasil.png">
+        </div>
+        <div class="area-content-api-2">
+            <div class="content-api-area1">
+                <p>No Brasil existem {{quantidade}}<br> com o nome {{name}}*</p>
+            </div>
+            <div class="content-api-area2">
+                <p>{{name}}, a sua posição no ranking<br> de nomes no Brasil é a {{popularidade}}*</p>
+            </div>
+            <div class="content-api-area3">
+                {{#nomesEstados.emNomeEstado}}
+                    <p>Em {{estado}}, encontrasse a maior quantidade de pessoas que possuem o nome {{name}}*</p>
+                {{/nomesEstados.emNomeEstado}}
+                {{#nomesEstados.noNomeEstado}}
+                    <p>No {{estado}}, encontrasse a maior quantidade de pessoas que possuem o nome {{name}}*</p>
+                {{/nomesEstados.noNomeEstado}}
+                {{#nomesEstados.naNomeEstado}}
+                    <p>Na {{estado}}, encontrasse a maior quantidade de pessoas que possuem o nome {{name}}*</p>
+                {{/nomesEstados.naNomeEstado}}
+            </div>
+            <div class="content-api-area4">
+                {{#nomesEstados.deNomeEstado}}
+                    <p>A cada 100 mil pessoas no estado de {{estado}}, {{aCada100MilNoEstado}} chamam-se {{name}}*</p>
+                {{/nomesEstados.deNomeEstado}}
+                {{#nomesEstados.doNomeEstado}}
+                    <p>A cada 100 mil pessoas no estado do {{estado}}, {{aCada100MilNoEstado}} chamam-se {{name}}*</p>
+                {{/nomesEstados.doNomeEstado}}
+                {{#nomesEstados.daNomeEstado}}
+                    <p>A cada 100 mil pessoas na {{estado}}, {{aCada100MilNoEstado}} chamam-se {{name}}*</p>
+                {{/nomesEstados.daNomeEstado}}
+            </div>
+        </div>
+    </div>    
+    <div class="area-content-2">
+        <div class="area-text-2-1">
+            <p>Informações técnicas</p>
+        </div>
+        <div class="area-text-2-2">
+            <p><a href="https://censo2010.ibge.gov.br/nomes/#/search" target="_blank">*Dados referentes ao censo<br> de 2010 feito pelo IBGE.<br>Clique e saiba mais informações.</a></p>
+        </div>
+    </div>             
+</div>
+
+<div class="modal-js">
+    <div class="modal-content">
+        <div class="modal-button">
+            <div class="close" data-dismiss="mod">X</div>
+        </div>
+        <h2>Web Scraping do site do IBGE (<a href="https://censo2010.ibge.gov.br/nomes/#/search" target="_blank">https://censo2010.ibge.gov.br/nomes/#/search</a>)</h2>
+        <h3>Tecnologias usadas:</h3>
+        <div class="modal-content-imgs">
+            <div class="modal-img1"></div>
+            <div class="modal-img2"></div>
+            <div class="modal-img3"></div>
+            <div class="modal-img4"></div>
+        </div>
+        <p>Site desenvolvido por Bruno Ferraz Sabino</p>
+    </div>
+</div>
+</div>
+<script src="/js/script.js"></script>
+{{>partials/footer}}
